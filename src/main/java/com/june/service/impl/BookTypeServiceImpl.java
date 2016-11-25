@@ -1,5 +1,7 @@
 package com.june.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,14 @@ public class BookTypeServiceImpl implements IBookTypeService {
 
 	public int save(BookType book) {
 		return dao.save(book);
+	}
+
+	public List<BookType> getBookTypeList() {
+		return dao.getBookTypeList();
+	}
+
+	public List<BookType> queryForPage(int offset, int length) {
+		return dao.queryForPage(offset, length);
 	}
 
 }

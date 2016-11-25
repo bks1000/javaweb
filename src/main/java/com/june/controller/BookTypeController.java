@@ -1,6 +1,7 @@
 package com.june.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,4 +40,29 @@ public class BookTypeController {
 		ret.put("result", result);
 		return ret;
 	}
+	
+	//http://localhost:8080/web/type/getbooktype.do
+	@RequestMapping("/getbooktypelist")
+	@ResponseBody
+	public Map<String, Object> getBookTypeList() {
+		List<BookType> lst = service.getBookTypeList();
+		Map<String, Object> ret = new HashMap<String, Object>();
+		ret.put("code", 0);
+		ret.put("result", lst);
+		return ret;
+	}
+	
+	@RequestMapping("/getbooktypepage")
+	@ResponseBody
+	public Map<String, Object> getBookTypePage(HttpServletRequest request) {
+		Map<String, Object> data = PageUtils.getParameters(request);
+		int index=Integer.parseInt(data.get("index").toString());
+		int length=Integer.parseInt(data.get("size").toString());
+		List<BookType> lst = service.queryForPage(index, length);
+		Map<String, Object> ret = new HashMap<String, Object>();
+		ret.put("code", 0);
+		ret.put("result", lst);
+		return ret;
+	}
+	
 }
