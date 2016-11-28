@@ -22,17 +22,23 @@ public class BookTypeController {
 	@Autowired
 	private IBookTypeService service;
 	
+	@RequestMapping("/booktype")
+	public String bookType()
+	{
+		return "booktype";
+	}
+	
 	@RequestMapping("/save")
 	@ResponseBody
 	public Map<String, Object> save(HttpServletRequest request)
 	{
 		Map<String, Object> data = PageUtils.getParameters(request);
-		String name = data.get("n").toString();
-		int parentid=0;
+		String name = PageUtils.getString(data.get("name"));
+		String parentid = PageUtils.getString(data.get("pid"));
 		
 		BookType dto = new BookType();
 		dto.setTypeName(name);
-		dto.setParentId(parentid);
+		dto.setParentId(Integer.parseInt(parentid));
 		
 		int result = service.save(dto);
 		Map<String, Object> ret = new HashMap<String, Object>();
