@@ -23,4 +23,17 @@ public class PageUtils {
 		}
 		return map;
 	}
+	
+	/**
+	 * 判断对象是null或者""
+	 * @param o
+	 * @return true: "",false:"***"
+	 */
+	public static String getString(Object o) {
+		if(o == null || "null".equals(o.toString())||"".equals(o.toString())){
+			return "";
+		}else {
+			return o.toString();
+		}
+	}
 }
