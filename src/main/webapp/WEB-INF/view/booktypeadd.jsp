@@ -20,16 +20,18 @@
 </script>
 </head>
 <body>
-	<form id="btype">
-		<fieldset class="form-group">
-			<label for="name">类型名称</label>
-			<input type="text" class="form-control" id="name" placeholder="图书类型名称">
-		</fieldset>
-		<fieldset class="form-group">
-			<label for="pid">父级编码</label>
-			<input type="text" class="form-control" id="pid" placeholder="父级编码">
-		</fieldset>
-		<input id="btnSave" type="button" onclick="save()">
-	</form>
+	<div class="container">
+		<form id="btype">
+			<fieldset class="form-group">
+				<label for="name">类型名称</label>
+				<input type="text" class="form-control" id="name" placeholder="图书类型名称">
+			</fieldset>
+			<fieldset class="form-group">
+				<label for="pid">父级编码</label>
+				<input type="text" class="form-control" id="pid" placeholder="父级编码">
+			</fieldset>
+			<input id="btnSave" type="button" onclick="save()" value="保存"/>
+		</form>
+	</div>
 </body>
 </html>

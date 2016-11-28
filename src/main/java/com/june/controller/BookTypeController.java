@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.june.core.utils.PageUtils;
 import com.june.dto.BookType;
@@ -22,10 +23,10 @@ public class BookTypeController {
 	@Autowired
 	private IBookTypeService service;
 	
-	@RequestMapping("/booktype")
-	public String bookType()
+	@RequestMapping("/addbooktype")
+	public String addBookType()
 	{
-		return "booktype";
+		return "booktypeadd";
 	}
 	
 	@RequestMapping("/save")
@@ -49,13 +50,11 @@ public class BookTypeController {
 	
 	//http://localhost:8080/web/type/getbooktype.do
 	@RequestMapping("/getbooktypelist")
-	@ResponseBody
-	public Map<String, Object> getBookTypeList() {
+	public ModelAndView getBookTypeList() {
+		ModelAndView mav = new ModelAndView("booktypelist");
 		List<BookType> lst = service.getBookTypeList();
-		Map<String, Object> ret = new HashMap<String, Object>();
-		ret.put("code", 0);
-		ret.put("result", lst);
-		return ret;
+		mav.addObject("types", lst);
+		return mav;
 	}
 	
 	@RequestMapping("/getbooktypepage")
