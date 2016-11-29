@@ -15,8 +15,8 @@ public class BookTypeServiceImpl implements IBookTypeService {
 	@Autowired
 	private IBookTypeDao dao;
 
-	public int save(BookType book) {
-		return dao.save(book);
+	public void save(BookType book) {
+		dao.save(book);
 	}
 
 	public List<BookType> getBookTypeList() {
@@ -27,4 +27,13 @@ public class BookTypeServiceImpl implements IBookTypeService {
 		return dao.queryForPage(offset, length);
 	}
 
+	public BookType getBookTypeById(int id) {
+		return dao.getBookTypeById(id);
+	}
+
+	public void delBookTypeById(int id) {
+		dao.delBookTypeById(id);
+	}
+
 }
+

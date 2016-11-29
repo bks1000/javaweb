@@ -48,7 +48,7 @@
                 <prop key="hibernate.use_sql_commants">${use_sql_comments}</prop>  
 <!--                 <prop key="hibernate.hbm2ddl.auto">${hbm2ddl.auto}</prop>   -->
             </props>  
-        </property>  
+        </property>
     </bean>  
     <bean id="txManagerH"  
         class="org.springframework.orm.hibernate4.HibernateTransactionManager">  
@@ -56,6 +56,8 @@
     </bean>  
     <tx:advice id="txAdviceH" transaction-manager="txManagerH">  
         <tx:attributes>  
+        	<tx:method name="save*" propagation="REQUIRED"/>
+        	<tx:method name="del*" propagation="REQUIRED"/>
             <tx:method name="get*" read-only="true" />  
             <tx:method name="*" />  
         </tx:attributes>  

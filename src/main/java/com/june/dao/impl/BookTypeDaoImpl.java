@@ -25,11 +25,13 @@ public class BookTypeDaoImpl implements IBookTypeDao {
 	@Resource(name="sessionFactory")
 	private SessionFactory sessionFactory;
 	
-	public int save(BookType book) {
+	public void save(BookType book) {
 		//sessionFactory.getCurrentSession().save(book);
 		
-		String sql = "insert INTO booktype(typename,parentid) VALUES(?,?)";
-		return jdbcTemplate.update(sql, book.getTypeName(),book.getParentId());
+		//String sql = "insert INTO booktype(typename,parentid) VALUES(?,?)";
+		//return jdbcTemplate.update(sql, book.getTypeName(),book.getParentId());
+		
+		sessionFactory.getCurrentSession().saveOrUpdate(book);
 	}
 
 	public List<BookType> getBookTypeList() {
@@ -44,6 +46,17 @@ public class BookTypeDaoImpl implements IBookTypeDao {
 		q.setFirstResult(offset*length);
 		q.setMaxResults(length);
 		return q.list();
+	}
+
+	public BookType getBookTypeById(int id) {
+		return (BookType)sessionFactory.getCurrentSession().get(BookType.class, id);
+	}
+
+	public void delBookTypeById(int id) {
+		String hql="delete BookType as p where p.id=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0,id);
+		query.executeUpdate();
 	}
 
 }

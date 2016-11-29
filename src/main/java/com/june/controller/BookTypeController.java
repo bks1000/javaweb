@@ -29,22 +29,33 @@ public class BookTypeController {
 		return "booktypeadd";
 	}
 	
+	@RequestMapping("/update")
+	public ModelAndView updateBookType(HttpServletRequest request){
+		ModelAndView mav = new ModelAndView("booktypeadd");
+		int id = Integer.parseInt(PageUtils.getString(PageUtils.getParameters(request).get("id")));
+		mav.addObject("bt", service.getBookTypeById(id));
+		return mav;
+	}
+	
 	@RequestMapping("/save")
 	@ResponseBody
 	public Map<String, Object> save(HttpServletRequest request)
 	{
 		Map<String, Object> data = PageUtils.getParameters(request);
+		String id = PageUtils.getString(data.get("id"));
 		String name = PageUtils.getString(data.get("name"));
 		String parentid = PageUtils.getString(data.get("pid"));
 		
 		BookType dto = new BookType();
+		if (!id.isEmpty()) {
+			dto.setId(Integer.parseInt(id));
+		}
 		dto.setTypeName(name);
 		dto.setParentId(Integer.parseInt(parentid));
 		
-		int result = service.save(dto);
+		service.save(dto);
 		Map<String, Object> ret = new HashMap<String, Object>();
 		ret.put("code", 0);
-		ret.put("result", result);
 		return ret;
 	}
 	
@@ -70,4 +81,15 @@ public class BookTypeController {
 		return ret;
 	}
 	
+	@RequestMapping("/del")
+	@ResponseBody
+	public Map<String, Object> delBookType(HttpServletRequest request) {
+		Map<String, Object> data = PageUtils.getParameters(request);
+		int id = Integer.parseInt(PageUtils.getString(data.get("id")));
+		service.delBookTypeById(id);
+		
+		Map<String, Object> ret = new HashMap<String, Object>();
+		ret.put("code", 0);
+		return ret;
+	}
 }

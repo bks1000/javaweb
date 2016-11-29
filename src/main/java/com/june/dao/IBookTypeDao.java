@@ -10,7 +10,14 @@ public interface IBookTypeDao {
 	 * @param book
 	 * @return
 	 */
-	int save(BookType book);
+	void save(BookType book);
+	
+	/**
+	 * 根据ID 获取实体
+	 * @param id
+	 * @return
+	 */
+	BookType getBookTypeById(int id);
 	
 	/**
 	 * 查询图书类别列表
@@ -25,4 +32,10 @@ public interface IBookTypeDao {
 	 * @return
 	 */
 	List<BookType> queryForPage(int offset,int length);
+	
+	/**
+	 * 删除
+	 * @param id
+	 */
+	void delBookTypeById(int id);
 }
