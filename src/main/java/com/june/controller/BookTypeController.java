@@ -62,7 +62,7 @@ public class BookTypeController {
 	//http://localhost:8080/web/type/getbooktype.do
 	@RequestMapping("/getbooktypelist")
 	public ModelAndView getBookTypeList() {
-		ModelAndView mav = new ModelAndView("booktypelist");
+		ModelAndView mav = new ModelAndView("booktypelist2");
 		List<BookType> lst = service.getBookTypeList();
 		mav.addObject("types", lst);
 		return mav;

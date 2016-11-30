@@ -15,4 +15,16 @@ public class BookDaoImpl extends HibernateDao implements IBookDao {
 		return this.find("from book");
 	}
 
+	public Book getBookById(int id) {
+		return get(Book.class, id);
+	}
+
+	public void saveBook(Book book) {
+		saveOrUpdate(book);
+	}
+
+	public void delBookById(int id) {
+		executeSql("DELETE FROM book WHERE bookid=?", id);
+	}
+
 }

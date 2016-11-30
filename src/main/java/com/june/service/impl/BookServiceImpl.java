@@ -19,4 +19,17 @@ public class BookServiceImpl implements IBookService {
 		return dao.getBookList();
 	}
 
+	public Book getBookById(int id) {
+		return dao.getBookById(id);
+	}
+
+	public void saveBook(Book book) {
+		dao.saveBook(book);
+		
+	}
+
+	public void delBookById(int id) {
+		dao.delBookById(id);
+	}
+
 }

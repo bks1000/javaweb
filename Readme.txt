@@ -16,3 +16,8 @@
 <jsp:include page="base/sidebar.jsp"></jsp:include> 动态
 jsp有两种引入，一种是动态的，一种是静态的。
 
+
+view备注：
+master.jsp相当于是母版页，其他页面都被加载到其中的一个div中
+booktypelist.jsp是最完整的一个页面，master.jsp是从其中拆分出来的
+
