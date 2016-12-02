@@ -1,7 +1,7 @@
 参考http://blog.csdn.net/laozitianxia/article/details/50682100
 (首先建立github账号 359546407@qq.com)
 
-修改
+修改 
 
 1.进入项目目录
 2.cmd -> git gui->Repository->git Bash
