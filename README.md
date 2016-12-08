@@ -1,2 +1,2 @@
 # javaweb
-java web study
+java web
