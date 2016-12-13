@@ -42,6 +42,9 @@ public class Book implements Serializable {
 	
 	@Column(name="isbn",length=30)
 	private String isbn;
+	
+	@Column(name="typeid",length=11)
+	private int typeid;
 
 	/**
 	 * @return bookId
@@ -169,4 +172,17 @@ public class Book implements Serializable {
 		this.isbn = isbn;
 	}
 	
+	/**
+	 * @return typeid
+	 */
+	public int getTypeid() {
+		return typeid;
+	}
+
+	/**
+	 * @param typeid 要设置的 typeid
+	 */
+	public void setTypeid(int typeid) {
+		this.typeid = typeid;
+	}
 }

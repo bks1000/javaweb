@@ -12,7 +12,7 @@ import com.june.dto.Book;
 public class BookDaoImpl extends HibernateDao implements IBookDao {
 
 	public List<Book> getBookList() {
-		return this.find("from book");
+		return this.find("from Book");
 	}
 
 	public Book getBookById(int id) {

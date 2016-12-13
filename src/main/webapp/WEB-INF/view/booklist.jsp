@@ -13,7 +13,7 @@
 	<div class="btn-group">
 		<button type="button" class="btn btn-default" onclick="query()">查询</button>
 		<button class="btn btn-default" data-toggle="modal"
-			data-target="#mainModal" href="${ctx}/type/addbooktype.do">新增</button>
+			data-target="#mainModal" href="${ctx}/book/add.do">新增</button>
 		<button id="btnUpdate" type="button" class="btn btn-default"
 			onclick="btnUpdate()">修改</button>
 		<button type="button" class="btn btn-default" onclick="btnDel()">删除</button>
