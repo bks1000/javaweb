@@ -16,13 +16,16 @@
 
 	<mvc:resources location="/static/" mapping="/static/**" />
 
-<!-- 	<mvc:interceptors> -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/**" /> -->
-<!-- 			<bean class="heb.sp.manage.interceptor.LoggerInterceptor"></bean> -->
-<!-- 		</mvc:interceptor> -->
-<!-- 	</mvc:interceptors> -->
-
+	<!-- 拦截器配置 -->
+	<mvc:interceptors>
+		<!-- 拦截所有的springmvc  请求-->
+		<bean class="com.june.core.interceptor.MyInterceptor"></bean>
+		<!-- 拦截指定url模式的请求 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.june.core.interceptor.MyInterceptor2"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
   	<!-- SpringMVC 的 Controller 返回各种视图的处理方式 http://www.open-open.com/lib/view/open1452776401683.html -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  

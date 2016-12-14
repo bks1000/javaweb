@@ -8,6 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>图书列表</title>
 <%@include file="base/jscss.jsp" %>
+<script type="text/javascript">
+	function query() {
+		location.reload(true);
+	}
+</script>
 </head>
 <body>
 	<div class="btn-group">

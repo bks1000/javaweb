@@ -1,14 +1,19 @@
 package com.june.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javassist.expr.NewArray;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.june.core.utils.PageUtils;
@@ -31,13 +36,20 @@ public class BookController {
 	}
 	
 	@RequestMapping("/add")
-	public String addBook() {
+	public String addBook(ModelMap bt) {
+		
+		bt.addAttribute("bt", new Book());
 		return "bookadd";
 	}
 	
 	@RequestMapping("/save")
-	public void save(@ModelAttribute("book")Book bean,HttpServletRequest request) {
-		Map<String, Object> params = PageUtils.getParameters(request);
-		Object object = params;
+	@ResponseBody
+	public Map<String, Object> save(@ModelAttribute("form")Book book,HttpServletRequest request) {
+		//Map<String, Object> params = PageUtils.getParameters(request);
+		service.saveBook(book);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("code", 1);
+		return map;
 	}
 }
