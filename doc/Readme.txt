@@ -1,4 +1,7 @@
-﻿综合练习项目
+﻿http://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/javadoc-api/
+
+
+综合练习项目
 
 网上书店（类似豆瓣 https://book.douban.com/ ）
 书名，作者相关信息，评价系统，在线预览

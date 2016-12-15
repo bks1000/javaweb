@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javassist.expr.NewArray;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.june.core.utils.PageUtils;
+import com.june.core.utils.RedisUtil;
 import com.june.dto.Book;
 import com.june.service.IBookService;
 
@@ -27,8 +29,15 @@ public class BookController {
 	@Autowired
 	private IBookService service;
 	
+	//测试jedis
+	//@Resource(name="redisUtil")
+	//private RedisUtil redisUtil;
+	
 	@RequestMapping("/list")
-	public ModelAndView getBookList() {
+	public ModelAndView getBookList(HttpServletRequest request) {
+		
+		//redisUtil.saveObject(request.getSession().getId().getBytes(), "book/list.do".getBytes());
+		
 		ModelAndView mav = new ModelAndView("booklist");
 		List<Book> lst = service.getBookList();
 		mav.addObject("books", lst);
