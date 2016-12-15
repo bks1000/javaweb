@@ -219,6 +219,12 @@
 	    <type>jar</type>
 	    <scope>compile</scope>
 	</dependency>
+	<!-- 自定义标签  :这个包改成引用 tomcat下的jsp-api.jar，因为版本的问题，报错-->
+	<!-- <dependency>
+    <groupId>javax.servlet</groupId>
+	    <artifactId>jsp-api</artifactId>
+	    <version>2.0</version>
+	</dependency> -->
   </dependencies>
   <build>
     <finalName>web</finalName>

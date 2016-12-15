@@ -14,10 +14,10 @@ import redis.clients.jedis.Jedis;
  * @author lenovo
  *
  */
-@Component("redisUtil")
+//@Component("redisUtil") //暂时去掉，需要时，请先打开配置
 public class RedisUtil {
 
-	@Resource(name="jedisdb")
+	//@Resource(name="jedisdb")//暂时去掉
 	private Jedis jedis; 
 	
 	public RedisUtil(){
