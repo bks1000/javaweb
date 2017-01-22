@@ -12,6 +12,41 @@
 	function query() {
 		location.reload(true);
 	}
+	//只能选择一个
+	function chk(obj) {
+		var state = obj.checked;
+		$(":checkbox").each(function(i) {
+			this.checked = false;
+		});
+		obj.checked = state;
+	}
+	//获取选中行的主键ID
+	function getCheckID() {
+		var ret="";
+		$(":checkbox").each(function() {
+			if (this.checked) {
+				var id = this.id;
+				//alert(id);
+				ret = id.slice(3);
+				return false;//退出循环
+			}
+		});
+		return ret;
+	}
+	
+	function btnUpdate() {
+		var id = getCheckID();
+		if (id == undefined || id == "undefined" ||id=="") {
+			alert("请选择要修改的数据！");
+			return;
+		}
+		//alert(id);
+		//window.location.href = "${ctx}/type/update.do?id=" + id;
+		$('#myModal').modal({
+		  keyboard: false,
+		  remote:"${ctx}/book/update.do?id=" + id
+		});
+	}
 </script>
 </head>
 <body>
@@ -46,5 +81,21 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">编辑</h4>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer"></div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
 </body>
 </html>

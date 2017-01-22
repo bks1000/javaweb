@@ -51,6 +51,14 @@ public class BookController {
 		return "bookadd";
 	}
 	
+	@RequestMapping("/update")
+	public ModelAndView updateBook(HttpServletRequest request){
+		ModelAndView mav = new ModelAndView("bookadd");
+		int id = Integer.parseInt(PageUtils.getString(PageUtils.getParameters(request).get("id")));
+		mav.addObject("bt", service.getBookById(id));
+		return mav;
+	}
+	
 	@RequestMapping("/save")
 	@ResponseBody
 	public Map<String, Object> save(@ModelAttribute("form")Book book,HttpServletRequest request) {
