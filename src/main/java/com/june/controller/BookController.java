@@ -38,7 +38,7 @@ public class BookController {
 		
 		//redisUtil.saveObject(request.getSession().getId().getBytes(), "book/list.do".getBytes());
 		
-		ModelAndView mav = new ModelAndView("booklist");
+		ModelAndView mav = new ModelAndView("book/booklist");
 		List<Book> lst = service.getBookList();
 		mav.addObject("books", lst);
 		return mav;
@@ -48,12 +48,12 @@ public class BookController {
 	public String addBook(ModelMap bt) {
 		
 		bt.addAttribute("bt", new Book());
-		return "bookadd";
+		return "book/bookadd";
 	}
 	
 	@RequestMapping("/update")
 	public ModelAndView updateBook(HttpServletRequest request){
-		ModelAndView mav = new ModelAndView("bookadd");
+		ModelAndView mav = new ModelAndView("book/bookadd");
 		int id = Integer.parseInt(PageUtils.getString(PageUtils.getParameters(request).get("id")));
 		mav.addObject("bt", service.getBookById(id));
 		return mav;

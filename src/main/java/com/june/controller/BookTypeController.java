@@ -26,12 +26,12 @@ public class BookTypeController {
 	@RequestMapping("/addbooktype")
 	public String addBookType()
 	{
-		return "booktypeadd";
+		return "booktype/booktypeadd";
 	}
 	
 	@RequestMapping("/update")
 	public ModelAndView updateBookType(HttpServletRequest request){
-		ModelAndView mav = new ModelAndView("booktypeadd");
+		ModelAndView mav = new ModelAndView("booktype/booktypeadd");
 		int id = Integer.parseInt(PageUtils.getString(PageUtils.getParameters(request).get("id")));
 		mav.addObject("bt", service.getBookTypeById(id));
 		return mav;
@@ -62,7 +62,7 @@ public class BookTypeController {
 	//http://localhost:8080/web/type/getbooktype.do
 	@RequestMapping("/getbooktypelist")
 	public ModelAndView getBookTypeList() {
-		ModelAndView mav = new ModelAndView("booktypelist2");
+		ModelAndView mav = new ModelAndView("booktype/booktypelist2");
 		List<BookType> lst = service.getBookTypeList();
 		mav.addObject("types", lst);
 		return mav;
