@@ -30,14 +30,14 @@
 	</mvc:interceptors>
 
   	<!-- SpringMVC 的 Controller 返回各种视图的处理方式 http://www.open-open.com/lib/view/open1452776401683.html -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/" />  
         <property name="suffix" value=".jsp" />  
-    </bean> 
+    </bean>
     
 	<!--freemarker 视图解释器 -->  
 	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-		<property name="suffix" value=".html" />
+		<property name="suffix" value=".ftl" />
 		<property name="contentType" value="text/html;charset=UTF-8" />
 		<property name="viewClass" value="com.june.core.utils.FreeMarkerView" />
 		<property name="exposeSpringMacroHelpers" value="false" />

@@ -2,6 +2,11 @@ package com.june.core.utils;
 
 public class Const {
 
+    /**
+     * 项目路径
+     */
+    public static String PROJECT_PATH;
+
 	/**
      * 分页默认每页条数
      * */
