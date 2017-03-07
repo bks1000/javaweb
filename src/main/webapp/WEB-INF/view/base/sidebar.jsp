@@ -3,10 +3,10 @@
 <div class="span3" id="sidebar">
      <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
          <li class="active">
-             <a onclick="jump('${ctx}/type/getbooktypelist.do',this)" href="#"><i class="icon-chevron-right"></i> 图书类型</a>
+             <a onclick="jump('${ctx}/type/getbooktypelist',this)" href="#"><i class="icon-chevron-right"></i> 图书类型</a>
          </li>
          <li>
-             <a onclick="jump('${ctx}/book/list.do',this)" href="#"><i class="icon-chevron-right"></i> 图书信息</a>
+             <a onclick="jump('${ctx}/book/list',this)" href="#"><i class="icon-chevron-right"></i> 图书信息</a>
          </li>
          <li>
              <a href="stats.html"><i class="icon-chevron-right"></i> Statistics (Charts)</a>

@@ -29,6 +29,7 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 
+	<!-- 17-3-2 两个视图解释器都可用了，分别解析jsp,ftl(freemark标签页) -->
   	<!-- SpringMVC 的 Controller 返回各种视图的处理方式 http://www.open-open.com/lib/view/open1452776401683.html -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/" />  

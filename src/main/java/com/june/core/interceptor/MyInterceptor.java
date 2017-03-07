@@ -30,6 +30,10 @@ public class MyInterceptor implements HandlerInterceptor {
 		if (StringUtils.isEmpty(Const.PROJECT_PATH)){
 			Const.PROJECT_PATH = request.getContextPath();
 		}
+		
+		request.setAttribute("base", Const.PROJECT_PATH);
+		request.setAttribute("ctx", Const.PROJECT_PATH);
+		
 		//查找处理类或处理方法是否标记了Before注解；如果标记了，调用处理程序
 		if (handler!=null){
             List<Annotation> lst = new ArrayList<Annotation>();
@@ -71,7 +75,9 @@ public class MyInterceptor implements HandlerInterceptor {
 		//String ip = getIpAddr(request);
 
 		//设置FREEMARK公用标签常量
-		modelAndView.addObject("base",request.getContextPath());
+		//modelAndView.addObject("base",request.getContextPath());
+		//设置jsp页面公用标签常量
+		//modelAndView.addObject("ctx",request.getContextPath());
 	}
 	
 	//最后执行(释放资源或处理异常)

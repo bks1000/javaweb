@@ -1,13 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.june</groupId>
-  <artifactId>web</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>web Maven Webapp</name>
+	<groupId>com.june</groupId>
+    <artifactId>web</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+  <name>Maven Webpro-spring-hibernate</name>
   <url>http://maven.apache.org</url>
   <properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   	<junit.version>3.8.1</junit.version>
   	<spring.version>3.2.6.RELEASE</spring.version>
 <!--   	<spring-data-redis.version>1.7.5.RELEASE</spring-data-redis.version> -->
@@ -206,12 +207,16 @@
 		<version>${javax.version}</version>
 	</dependency>
 	<!-- servlet -->
+	<!-- runtime在运行的时候依赖，在编译的时候不依赖  -->
+	<!-- provided依赖：在编译和测试的过程有效，最后生成war包时不会加入，诸如：servlet-api，因为servlet-api，tomcat等web服务器已经存在了，如果再打包会冲突  -->
 	<dependency>
 		<groupId>javax.servlet</groupId>
 		<artifactId>servlet-api</artifactId>
 		<version>${servlet.version}</version>
+		<scope>provided</scope>
 	</dependency>
 	<!-- redis -->
+	<!-- compile范围指的是编译范围有效，在编译和打包时都会将依赖存储进去 -->
 	<!--<dependency>
         <groupId>org.springframework.data</groupId>
         <artifactId>spring-data-redis</artifactId>
@@ -229,9 +234,17 @@
     	<groupId>javax.servlet</groupId>
 	    <artifactId>jsp-api</artifactId>
 	    <version>2.0</version>
+	    <scope>provided</scope>
 	</dependency>
   </dependencies>
   <build>
-    <finalName>web</finalName>
+    <finalName>webpro</finalName>
+	<plugins>
+	  <plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-archetype-plugin</artifactId>
+		  <version>2.2</version>
+	  </plugin>
+    </plugins>
   </build>
 </project>

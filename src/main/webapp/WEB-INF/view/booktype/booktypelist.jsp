@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page language="java" import="com.june.dto.BookType"%>
-<%@include file="base/taglibs.jsp"%>
+<%@include file="../base/taglibs.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>图书类型列表</title>
-<%@ include file="base/jscss.jsp"%>
+<%@ include file="../base/jscss.jsp"%>
 <!-- jstl Foreach    http://blog.csdn.net/liu78778/article/details/3973786 -->
 <script type="text/javascript">
 	//只能选择一个
@@ -70,40 +70,49 @@
 </script>
 </head>
 <body>
-	
-	
-	<div class="btn-group">
-		<button type="button" class="btn btn-default" onclick="query()">查询</button>
-		<button class="btn btn-default" data-toggle="modal"
-			data-target="#myModal" href="${ctx}/type/addbooktype.do">新增</button>
-		<button id="btnUpdate" type="button" class="btn btn-default"
-			onclick="btnUpdate()">修改</button>
-		<button type="button" class="btn btn-default" onclick="btnDel()">删除</button>
+	<jsp:include page="base/navbar.jsp"></jsp:include>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<%@include file="base/sidebar.jsp"%>
+			<div class="span9" id="content">
+				<div class="row-fluid">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" onclick="query()">查询</button>
+<!-- 						<input type="button" class="btn btn-default" value="新增" -->
+<!-- 							onclick="btnAdd()" /> -->
+						<button class="btn btn-default" data-toggle="modal"
+							data-target="#myModal" href="${ctx}/type/addbooktype.do">新增</button>
+						<button id="btnUpdate" type="button" class="btn btn-default"
+							onclick="btnUpdate()">修改</button>
+						<button type="button" class="btn btn-default" onclick="btnDel()">删除</button>
+					</div>
+					<table class="table table-hover">
+						<thead class="thead-inverse">
+							<tr scope="row">
+								<th>选择</th>
+								<th>行号</th>
+								<th>ID</th>
+								<th>类型名称</th>
+								<th>PID</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="item" items="${types }" varStatus="status">
+								<tr scope="row">
+									<td><input id="txt${item.id}" type="checkbox"
+										onclick="chk(this)" /></td>
+									<td>${status.index+1 }</td>
+									<td>${item.id }</td>
+									<td>${item.typeName }</td>
+									<td>${item.parentId }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
-	<table class="table table-hover">
-		<thead class="thead-inverse">
-			<tr scope="row">
-				<th>选择</th>
-				<th>行号</th>
-				<th>ID</th>
-				<th>类型名称</th>
-				<th>PID</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="item" items="${types }" varStatus="status">
-				<tr scope="row">
-					<td><input id="txt${item.id}" type="checkbox"
-						onclick="chk(this)" /></td>
-					<td>${status.index+1 }</td>
-					<td>${item.id }</td>
-					<td>${item.typeName }</td>
-					<td>${item.parentId }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-				
 	<!-- 按钮触发模态框 -->
 	<%-- <button class="btn btn-primary btn-lg" data-toggle="modal"
 		data-target="#myModal" href="${ctx}/type/addbooktype.do">开始演示模态框</button> 
@@ -135,7 +144,7 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">编辑</h4>
+					<h4 class="modal-title" id="myModalLabel">编辑类型</h4>
 				</div>
 				<div class="modal-body"></div>
 				<div class="modal-footer"></div>
