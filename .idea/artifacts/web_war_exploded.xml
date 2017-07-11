@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="web:war exploded">
-    <output-path>$PROJECT_DIR$/target/webpro</output-path>
+  <artifact type="exploded-war" build-on-make="true" name="web:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/web_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -45,6 +45,7 @@
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.2.3" />
           <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.3" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.2.3" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-ehcache:1.2.3" />
           <element id="library" level="project" name="Maven: org.apache.shiro:shiro-spring:1.2.3" />
           <element id="library" level="project" name="Maven: org.apache.struts:struts2-core:2.5.1" />
           <element id="library" level="project" name="Maven: ognl:ognl:3.1.8" />
@@ -65,14 +66,9 @@
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-ehcache:4.2.2.Final" />
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.20" />
           <element id="library" level="project" name="Maven: javax.annotation:jsr250-api:1.0" />
-          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
           <element id="library" level="project" name="Maven: redis.clients:jedis:2.9.0" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.4.2" />
-          <element id="library" level="project" name="Maven: javax.servlet:jsp-api:2.0" />
         </element>
-      </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/webpro/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="web/web/Web" />
     </root>

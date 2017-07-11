@@ -24,7 +24,7 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<%@include file="base/sidebar.jsp" %>
-			<div class="span9" id="content">
+			<div class="span8" id="content">
 				<div class="row-fluid">
 					<div id="mainBody"></div>
 				</div>

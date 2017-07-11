@@ -20,6 +20,10 @@
 		});
 		obj.checked = state;
 	}
+	function rowClick(obj) {
+		console.log(obj);
+		console.log($(obj)[0].children);
+    }
 	//获取选中行的主键ID
 	function getCheckID() {
 		var ret="";
@@ -42,10 +46,14 @@
 		}
 		//alert(id);
 		//window.location.href = "${ctx}/type/update.do?id=" + id;
-		$('#myModal').modal({
+		/*$('#myModal').modal({
 		  keyboard: false,
 		  remote:"${ctx}/book/update.do?id=" + id
-		});
+		});*/
+        $('#mainModal').modal({
+            keyboard: false,
+            remote:"${ctx}/book/update.do?id=" + id
+        });
 	}
 </script>
 </head>
@@ -54,7 +62,7 @@
 		<button type="button" class="btn btn-default" onclick="query()">查询</button>
 		<button class="btn btn-default" data-toggle="modal"
 			data-target="#mainModal" href="${ctx}/book/add.do">新增</button>
-		<button id="btnUpdate" type="button" class="btn btn-default"
+		<button id="btnUpdate" type="button" class="btn btn-default" data-target="#mainModal"
 			onclick="btnUpdate()">修改</button>
 		<button type="button" class="btn btn-default" onclick="btnDel()">删除</button>
 	</div>
@@ -70,7 +78,7 @@
 		</thead>
 		<tbody>
 			<c:forEach var="item" items="${books }" varStatus="status">
-				<tr scope="row">
+				<tr scope="row" onclick="rowClick(this)">
 					<td><input id="txt${item.bookId}" type="checkbox"
 						onclick="chk(this)" /></td>
 					<td>${status.index+1 }</td>
@@ -81,7 +89,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -93,9 +101,7 @@
 				<div class="modal-body"></div>
 				<div class="modal-footer"></div>
 			</div>
-			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal -->
-	</div>
+	</div>-->
 </body>
 </html>
